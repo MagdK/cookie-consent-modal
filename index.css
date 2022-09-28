@@ -96,6 +96,7 @@ Challenge:
 }
 
 .modal-inner-loading{
+    display: none;
     text-align: center;
 }
 
