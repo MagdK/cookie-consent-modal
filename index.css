@@ -53,11 +53,11 @@ li{
 
 /* layout */
 
-img{
+img {
     width: 100%;
 }
 
-main{
+main {
     width: 400px;
     margin: 0 auto;
 }
@@ -82,7 +82,7 @@ Challenge:
     left: 0;
     margin: auto;
 
-    height: 420px;
+    height: 440px;
     width: 350px;
     border-radius: 5px;
     box-shadow: 0px 0px 6px 2px #666;
@@ -134,6 +134,10 @@ Challenge:
     justify-content: center;
 }
 
+.modal-choice-btns-reverse {
+    flex-direction: row-reverse;
+}
+
 .modal-btn{
     padding: 10px 24px;
     cursor: pointer;
@@ -147,6 +151,11 @@ input{
     padding: 10px;
     width: 100%;
     border-radius: 3px;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -5000px;
 }
 
 /* modal after submit */

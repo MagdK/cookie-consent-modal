@@ -18,7 +18,13 @@ pageContent = () => {
 		</main>
         <div class="modal" id="modal">
 			<div class="close-modal-btn-container">
-				<button class="modal-close-btn" id="modal-close-btn">X</button>
+				<button 
+                    class="modal-close-btn" 
+                    id="modal-close-btn"
+                    disabled
+                >
+                    X
+                </button>
 			</div>
 			<div class="modal-inner" id="modal-inner">
                 
@@ -49,6 +55,7 @@ const modalFormProgress = () => {
                 </div>
             </div>
             <form id="consent-form">
+                <label for="fullNameInput" class="visually-hidden">Full Name</label>
                 <input 
                     type="text"
                     id="fullNameInput"
@@ -56,6 +63,7 @@ const modalFormProgress = () => {
                     placeholder="Full name"
                     required
                 >
+                <label for="emailInput" class="visually-hidden">Email</label>
                 <input 
                     type="email"
                     id="emailInput"
@@ -64,7 +72,7 @@ const modalFormProgress = () => {
                     required
                 >
                 <div
-                    class="modal-choice-btns"
+                    class="modal-choice-btns reverse"
                     id="modal-choice-btns"
                 >
                     <button 
@@ -75,7 +83,7 @@ const modalFormProgress = () => {
                     </button>
                     <button 
                         type="button"
-                        class="modal-btn"
+                        class="modal-btn decline-btn"
                     >
                         Decline
                     </button>
@@ -117,11 +125,17 @@ loadEvent = () => {
     const uploadTextStepTwo = document.getElementById('uploadTextStepTwo');
     const modalDisplayName = document.querySelector('.modal-display-name');
 
+    const declineBtn = document.querySelector('.decline-btn');
+    const modalChoiceBtns = document.getElementById('modal-choice-btns');
+
    
     // Show modal after 1,5s
     setTimeout(() => {
         cookieModal.style.display = 'inline';
         cookieModalConfirmation.style.display = 'none';
+        declineBtn.addEventListener('mouseover', () => {
+            modalChoiceBtns.classList.toggle('modal-choice-btns-reverse');
+        })
     }, 1500);
 
     // Close modal
@@ -160,6 +174,7 @@ loadEvent = () => {
             cookieModalDefaultContent.style.display = 'none';
             cookieModalConfirmation.style.display = 'inline';
             modalDisplayName.innerText = name;
+            modalCloseBtn.disabled = false
         }, 3000)
     });
 };

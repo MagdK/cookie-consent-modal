@@ -1,2 +1,2 @@
 # cookie-consent-modal
-JavaScript practice
+JavaScript practice - the most annoying cookie consent modal ever
