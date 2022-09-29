@@ -31,16 +31,12 @@ const modalFormProgress = () => {
         <div class="cookie-modal-default-content">
             <div class="modal-header">
                 <h2>We ❤️ Your Data!</h2>
-
-                
                 <p 
                     class="modal-text" 
                     id="modalTextStepZero"
                 >
                         We have a strict policy on tracking and spamming: we'll definitely track you, and we'll definitely spam you. To use this site, enter your name and email address and accept our ridiculous terms and conditions.
                 </p>
-
-                
                 <div class="modal-inner-loading">
                     <img src="images/loading.svg" class="loading">
                     <p id="uploadTextStepOne">
@@ -87,7 +83,7 @@ const modalFormProgress = () => {
             </form>	
         </div>	
         <div class="cookie-modal-confirmation">
-            <h2>Thanks you sucker!</h2>
+            <h2>Thanks <span class="modal-display-name"></span>!</h2>
             <p>We just sold the rights to your eternal soul.</p>
             <div class="idiot-gif">
                 <img src="images/pirate.gif">
@@ -119,6 +115,7 @@ loadEvent = () => {
     const modalInnerLoading = document.querySelector('.modal-inner-loading');
     const uploadTextStepOne = document.getElementById('uploadTextStepOne');
     const uploadTextStepTwo = document.getElementById('uploadTextStepTwo');
+    const modalDisplayName = document.querySelector('.modal-display-name');
 
    
     // Show modal after 1,5s
@@ -137,10 +134,21 @@ loadEvent = () => {
     consentForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
+        const consentFormData = new FormData(consentForm)
+        console.log(consentFormData)
+
+        const name = consentFormData.get('fullNameInput')
+        console.log(name) 
+
+        const email = consentFormData.get('emailInput')
+        console.log(email) 
+
+
         // Step 1
         modalTextStepZero.style.display = 'none';
         modalInnerLoading.style.display = 'inline';
         uploadTextStepTwo.style.display = 'none';
+
         // Step 2
         setTimeout(() => {
             uploadTextStepOne.style.display = 'none';
@@ -151,6 +159,7 @@ loadEvent = () => {
         setTimeout(() => {
             cookieModalDefaultContent.style.display = 'none';
             cookieModalConfirmation.style.display = 'inline';
+            modalDisplayName.innerText = name;
         }, 3000)
     });
 };
